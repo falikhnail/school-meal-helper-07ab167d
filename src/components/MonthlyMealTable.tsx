@@ -315,14 +315,19 @@ export function MonthlyMealTable({
       head: [headers],
       body: tableData,
       startY: 25,
-      styles: { fontSize: exportAll ? 5 : 6, cellPadding: 1 },
-      headStyles: { fillColor: [59, 130, 246], textColor: 255, halign: 'center', fontSize: exportAll ? 4 : 5 },
+      styles: { fontSize: exportAll ? 5 : 6, cellPadding: 1, lineWidth: 0.2, lineColor: [0, 0, 0] },
+      headStyles: { fillColor: [59, 130, 246], textColor: 255, halign: 'center', fontSize: exportAll ? 4 : 5, lineWidth: 0.2, lineColor: [0, 0, 0] },
       columnStyles,
       foot: [[
         { content: 'Total:', colSpan: exportDates.length + 2, styles: { halign: 'right', fontStyle: 'bold' } },
         { content: formatCurrency(exportMonthTotal), styles: { halign: 'right', fontStyle: 'bold' } },
         { content: '', styles: {} },
       ]],
+      didParseCell: (data) => {
+        if (data.section === 'body' && data.cell.raw === 'HAS_MEAL') {
+          data.cell.text = [];
+        }
+      },
       didDrawCell: (data) => {
         if (data.section === 'body' && data.cell.raw === 'HAS_MEAL') {
           const x = data.cell.x + data.cell.width / 2;
@@ -332,7 +337,6 @@ export function MonthlyMealTable({
           doc.setLineWidth(0.4);
           doc.line(x - size * 0.5, y, x - size * 0.1, y + size * 0.4);
           doc.line(x - size * 0.1, y + size * 0.4, x + size * 0.5, y - size * 0.4);
-          data.cell.text = [];
         }
       },
     });
@@ -457,14 +461,19 @@ export function MonthlyMealTable({
       head: [headers],
       body: tableData,
       startY: 25,
-      styles: { fontSize: exportDates.length > 20 ? 5 : 6, cellPadding: 1 },
-      headStyles: { fillColor: [59, 130, 246], textColor: 255, halign: 'center', fontSize: exportDates.length > 20 ? 4 : 5 },
+      styles: { fontSize: exportDates.length > 20 ? 5 : 6, cellPadding: 1, lineWidth: 0.2, lineColor: [0, 0, 0] },
+      headStyles: { fillColor: [59, 130, 246], textColor: 255, halign: 'center', fontSize: exportDates.length > 20 ? 4 : 5, lineWidth: 0.2, lineColor: [0, 0, 0] },
       columnStyles,
       foot: [[
         { content: 'Total:', colSpan: exportDates.length + 2, styles: { halign: 'right', fontStyle: 'bold' } },
         { content: formatCurrency(exportTotal), styles: { halign: 'right', fontStyle: 'bold' } },
         { content: '', styles: {} },
       ]],
+      didParseCell: (data) => {
+        if (data.section === 'body' && data.cell.raw === 'HAS_MEAL') {
+          data.cell.text = [];
+        }
+      },
       didDrawCell: (data) => {
         if (data.section === 'body' && data.cell.raw === 'HAS_MEAL') {
           const x = data.cell.x + data.cell.width / 2;
@@ -474,7 +483,6 @@ export function MonthlyMealTable({
           doc.setLineWidth(0.4);
           doc.line(x - size * 0.5, y, x - size * 0.1, y + size * 0.4);
           doc.line(x - size * 0.1, y + size * 0.4, x + size * 0.5, y - size * 0.4);
-          data.cell.text = [];
         }
       },
     });
