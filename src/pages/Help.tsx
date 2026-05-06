@@ -36,7 +36,7 @@ const Help = () => {
             <AccordionContent className="text-muted-foreground space-y-3 pb-4">
               <p>Buka browser di perangkat Anda (Chrome, Safari, Firefox, Edge) dan ketik alamat:</p>
               <code className="block bg-muted rounded-lg px-4 py-2 text-sm font-mono text-foreground">
-                https://data-makan-gurusr.vercel.app/
+                https://data-makansr.vercel.app/
               </code>
               <p>Aplikasi akan terbuka dan siap digunakan.</p>
             </AccordionContent>
@@ -264,7 +264,7 @@ const Help = () => {
               </div>
               <div className="space-y-1">
                 <h4 className="font-semibold text-foreground text-sm">Berapa harga per porsi?</h4>
-                <p className="text-sm">Rp 10.000 per porsi makan.</p>
+                <p className="text-sm">Rp 15.000 per porsi makan siang.</p>
               </div>
               <div className="space-y-1">
                 <h4 className="font-semibold text-foreground text-sm">Bagaimana jika salah input?</h4>
