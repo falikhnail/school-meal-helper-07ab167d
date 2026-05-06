@@ -36,7 +36,7 @@ const Help = () => {
             <AccordionContent className="text-muted-foreground space-y-3 pb-4">
               <p>Buka browser di perangkat Anda (Chrome, Safari, Firefox, Edge) dan ketik alamat:</p>
               <code className="block bg-muted rounded-lg px-4 py-2 text-sm font-mono text-foreground">
-                https://data-makan-gurusr.vercel.app/
+                https://data-makansr.vercel.app/
               </code>
               <p>Aplikasi akan terbuka dan siap digunakan.</p>
             </AccordionContent>
