@@ -3,6 +3,7 @@ import { Teacher, MealRecord, MealType, MEAL_PRICES, MonthlyPayment } from '@/ty
 import { getWeekNumber, getStartOfWeek, formatDateKey } from '@/lib/dateUtils';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
+import { toast as sonnerToast } from 'sonner';
 
 export function useMealTracker() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
@@ -181,6 +182,7 @@ export function useMealTracker() {
         setMealRecords((prev) =>
           prev.filter((r) => !(r.teacherId === teacherId && r.date === dateKey))
         );
+        sonnerToast.success('Data dihapus', { duration: 1500 });
       } else {
         // Upsert record
         const { data, error } = await supabase
@@ -211,6 +213,7 @@ export function useMealTracker() {
           );
           return [...filtered, newRecord];
         });
+        sonnerToast.success('Data tersimpan', { duration: 1500 });
       }
     } catch (error) {
       console.error('Error setting meal record:', error);
